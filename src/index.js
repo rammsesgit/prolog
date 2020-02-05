@@ -1,15 +1,13 @@
-const express = require('express')
 const next = require('next')
-const n_routes = require('next-routes')
-const app = express()
-const nextApp = next({ dev: process.env.NODE_ENV !== 'production', dir: './src' })
-const routes = n_routes()
-const handler = routes.getRequestHandler(nextApp)
+const routes = require('./dynamic-routes')
+const app = next({ dev: process.env.NODE_ENV !== 'production', dir: './src' })
+const handler = routes.getRequestHandler(app)
 
-app.use(express.json())
+const port = process.env.PORT || 3000
 
 // Server up
-nextApp.prepare().then(() => {
-  app.use(handler).listen(process.env.PORT || 3000)
-  console.log(`Run server on port: ${process.env.PORT || 3000} ✅`)
+const { createServer } = require('http')
+app.prepare().then(() => {
+  createServer(handler).listen(port)
+  console.log(`Server on port ${port}`)
 })
