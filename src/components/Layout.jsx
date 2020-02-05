@@ -2,6 +2,8 @@ import Head from 'next/head'
 import NProgress from 'nprogress'
 import Router from 'next/router'
 
+import Header from '../components/Header'
+
 Router.onRouteChangeStart = url => {
   NProgress.start()
 }
@@ -42,6 +44,7 @@ export default ({ children, title }) => {
         <title>{title}</title>
       </Head>
 
+      <Header />
       <main>{children}</main>
 
       <style jsx global>{`

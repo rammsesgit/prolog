@@ -1,9 +1,10 @@
 import Layout from '../components/Layout'
+import Editor from '../components/Editor'
 
 export default () => {
   return (
     <Layout title='Prolog'>
-      <h1>Hello prolog</h1>
+      <Editor />
     </Layout>
   )
 }
