@@ -5,6 +5,16 @@ module.exports = withCSS({
     config.node = {
       fs: 'empty'
     }
+    config.module.rules.push(
+      {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader']
+      },
+      {
+        test: /\.ttf$/,
+        use: ['file-loader']
+      }
+    )
 
     return config
   }

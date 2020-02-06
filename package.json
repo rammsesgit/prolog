@@ -23,19 +23,11 @@
   },
   "homepage": "https://github.com/rammsesgit/prolog#readme",
   "dependencies": {
-    "@svgr/webpack": "^5.1.0",
-    "@timkendrick/monaco-editor": "0.0.9",
-    "@zeit/next-css": "^1.0.1",
-    "css-loader": "^3.4.2",
-    "express": "^4.17.1",
-    "monaco-editor": "^0.19.3",
-    "monaco-editor-webpack-plugin": "^1.8.2",
     "next": "^9.2.1",
     "next-routes": "^1.4.2",
     "nprogress": "^0.2.0",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
-    "react-monaco-editor": "^0.33.0",
     "tau-prolog": "^0.2.80"
   },
   "devDependencies": {

@@ -45,8 +45,14 @@ export default ({ children, title }) => {
       </Head>
 
       <Header />
-      <main>{children}</main>
 
+      <main className='container'>{children}</main>
+
+      <style jsx>{`
+        main {
+          margin: 0 auto;
+        }
+      `}</style>
       <style jsx global>{`
         * {
           margin: 0;
@@ -63,16 +69,15 @@ export default ({ children, title }) => {
           font-family: sans-serif;
           width: 100vw;
           overflow-x: hidden;
+
+          background-color: #131313;
+          color: #eee;
         }
         li {
           list-style: none;
         }
         a {
           text-decoration: none;
-        }
-        input:focus,
-        input:hover {
-          background-color: rgba(0, 0, 0, 0.1);
         }
 
         .btn {
@@ -157,6 +162,12 @@ export default ({ children, title }) => {
         .not-active {
           pointer-events: none;
           color: gray !important;
+        }
+
+        @media screen and (max-width: 640px) {
+          .container {
+            max-width: 99vw;
+          }
         }
         /* <~~ Global */
 

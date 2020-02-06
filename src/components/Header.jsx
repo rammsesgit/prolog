@@ -17,7 +17,12 @@ export default () => {
 
       <style jsx>{`
         .header {
-          margin: 20px;
+          padding: 10px;
+          margin-bottom: 20px;
+          width: 100vw;
+        }
+        a {
+          color: #29d;
         }
       `}</style>
     </header>
