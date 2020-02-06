@@ -12,7 +12,7 @@ Router.onRouteChangeError = () => NProgress.done()
 
 export default ({ children, title }) => {
   return (
-    <div>
+    <div className='container'>
       <Head>
         <meta charSet='UTF-8' />
         <meta name='viewport' content='width=device-width, initial-scale=1.0' />

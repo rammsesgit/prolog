@@ -1,5 +1,9 @@
 import { useState, useEffect } from 'react'
-import { rooms, sha } from '../public/js/source-pl'
+import { rooms, sha } from '../../public/js/source-pl'
+
+import PrologOutput from './PrologOutput'
+import PrologQueries from './PrologQueries'
+import CustomEditor from '../editor/CustomEditor'
 
 export default () => {
   const [query, setQuery] = useState('room(X).')
@@ -12,10 +16,6 @@ export default () => {
   useEffect(() => {
     session.consult(prologCode)
   }, [])
-
-  useEffect(() => {
-    console.log(query)
-  })
 
   /**
    * Show all results like if pressed semicolon.
@@ -105,84 +105,10 @@ export default () => {
 
   return (
     <div>
-      <div className=' container query-row'>
-        <label htmlFor='query'>Query:</label>
-        <input
-          className='query-box'
-          id='query'
-          type='text'
-          autoFocus
-          onKeyUp={e => handleQueryBox(e.key, e.target)}
-          value={query}
-          onChange={e => setQuery(e.target.value)}
-        />
-      </div>
+      <PrologQueries query={query} handleQueryBox={handleQueryBox} setQuery={setQuery} />
+      <PrologOutput output={output} />
 
-      <div className='container'>
-        <label htmlFor='output'>Output:</label>
-        <textarea id='output' readOnly defaultValue={output}></textarea>
-      </div>
-
-      <div className='container editor'>
-        <small className='editor-title'>Prolog code:</small>
-        <textarea
-          id='editor'
-          defaultValue={prologCode}
-          onChange={e => newConsult(e.target.value)}
-        ></textarea>
-      </div>
-
-      <style jsx>{`
-        input,
-        textarea {
-          font-size: 1rem;
-        }
-
-        .query-row {
-          padding: 10px;
-          justify-content: flex-start;
-        }
-        .query-box {
-          border-radius: 6px;
-          padding: 2px 4px;
-          margin-left: 5px;
-          border: 1px solid gray;
-        }
-
-        #output {
-          width: calc(100% - 70px);
-          border-radius: 8px;
-          padding: 2px 4px;
-          border: 1px solid gray;
-          background-color: #eee;
-        }
-
-        .editor.container {
-          flex-direction: column;
-          margin-top: 20px;
-        }
-        .editor-title {
-          width: 100%;
-          padding-left: 5px;
-        }
-        #editor {
-          padding: 10px;
-          margin: 5px;
-          border-radius: 8px;
-          border: 1px solid gray;
-          background-color: #1d1d1d;
-          color: #eee;
-
-          height: 450px;
-          width: 400px;
-        }
-
-        @media screen and (max-width: 440px) {
-          #editor {
-            max-width: 90%;
-          }
-        }
-      `}</style>
+      <CustomEditor prologCode={prologCode} newConsult={newConsult} />
 
       <script src='/js/tau-prolog.js'></script>
     </div>
